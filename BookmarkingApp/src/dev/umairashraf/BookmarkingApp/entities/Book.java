@@ -1,5 +1,7 @@
 package dev.umairashraf.BookmarkingApp.entities;
 
+import java.util.Arrays;
+
 public class Book extends Bookmark {
 	private String publisher;
 	private String[] author;
@@ -45,6 +47,12 @@ public class Book extends Bookmark {
 
 	public void setAmazonRating(double amazonRating) {
 		this.amazonRating = amazonRating;
+	}
+
+	@Override
+	public String toString() {
+		return "Book [publisher=" + publisher + ", author=" + Arrays.toString(author) + ", genre=" + genre
+				+ ", amazonRating=" + amazonRating + ", publicationYear=" + publicationYear + "]";
 	}
 
 }

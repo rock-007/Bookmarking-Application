@@ -1,5 +1,6 @@
 package dev.umairashraf.BookmarkingApp.managers;
 
+import dev.umairashraf.BookmarkingApp.dao.UserDao;
 import dev.umairashraf.BookmarkingApp.entities.User;
 
 public class UserManager {
@@ -9,6 +10,7 @@ public class UserManager {
 
 	// but for creating only one instance we will use the below method
 	private static UserManager instance = new UserManager();
+	private static UserDao dao = new UserDao();
 
 	public static UserManager getInstance() {
 
@@ -29,6 +31,11 @@ public class UserManager {
 //reutrn user manager class instance
 		return user;
 
+	}
+	
+	
+	public User[] getUsers() {
+		return dao.getUsers();
 	}
 
 }

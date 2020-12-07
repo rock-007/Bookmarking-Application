@@ -1,14 +1,17 @@
 package dev.umairashraf.BookmarkingApp.managers;
 
+import dev.umairashraf.BookmarkingApp.DataStore;
+import dev.umairashraf.BookmarkingApp.dao.BookmarkDao;
 import dev.umairashraf.BookmarkingApp.entities.Book;
+import dev.umairashraf.BookmarkingApp.entities.Bookmark;
 import dev.umairashraf.BookmarkingApp.entities.Movie;
 import dev.umairashraf.BookmarkingApp.entities.WebLink;
 
 public class BookmarkManager {
 
 	private static BookmarkManager instance = new BookmarkManager();
-
-	private BookmarkManager() {
+private static BookmarkDao dao=new BookmarkDao();
+private BookmarkManager() {
 	};
 
 	// public access menthod
@@ -57,5 +60,8 @@ public class BookmarkManager {
 		return book;
 
 	}
-
+	
+public Bookmark[][] getBookmarks(){
+	return DataStore.getBookmarks();
+}
 }

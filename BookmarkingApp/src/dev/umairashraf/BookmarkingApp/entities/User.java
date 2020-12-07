@@ -16,7 +16,7 @@ public class User {
 
 	public void setId(long id) {
 		this.id = id;
-		System.out.println("test");
+		
 	}
 
 	public String getEmail() {
@@ -65,6 +65,12 @@ public class User {
 
 	public void setUserType(String userType) {
 		this.userType = userType;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", email=" + email + ", password=" + password + ", firstName=" + firstName
+				+ ", lastName=" + lastName + ", gender=" + gender + ", userType=" + userType + "]";
 	}
 
 }

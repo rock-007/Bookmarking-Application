@@ -17,7 +17,17 @@ public class DataStore {
 	private static final int BOOKMARK_TYPES_COUNT = 3;
 	private static final int TOTAL_USER_COUNT = 5;
 	private static User[] users = new User[TOTAL_USER_COUNT];
+
+	public static User[] getUsers() {
+		return users;
+	}
+
 	private static Bookmark[][] bookmarks = new Bookmark[BOOKMARK_TYPES_COUNT][BOOKMARK_COUNT_PER_TYPE];
+
+	public static Bookmark[][] getBookmarks() {
+		return bookmarks;
+	}
+
 	private static UserBookmark[] userBookmarks = new UserBookmark[TOTAL_USER_COUNT * USER_BOOKMARK_LIMIT];
 
 	// method for loading the data
@@ -31,15 +41,15 @@ public class DataStore {
 	}
 
 	private static void loadUsers() {
-		users[0] = UserManager.getInstance().createUser(1000, " user0@semanticsquare.com", "test", "John", "M",
+		users[0] = UserManager.getInstance().createUser(1000, " user0@semanticsquare.com", "testx", "John", "M",
 				Gender.MALE, UserType.USER);
-		users[0] = UserManager.getInstance().createUser(1001, "user1@semanticsquare.com", "	test", "Sam", "	M",
+		users[1] = UserManager.getInstance().createUser(1001, "user1@semanticsquare.com", "	test", "Sam", "	M",
 				Gender.MALE, UserType.USER);
-		users[0] = UserManager.getInstance().createUser(1002, "	user2@semanticsquare.com", "	test", "Anita", "	M",
+		users[2] = UserManager.getInstance().createUser(1002, "	user2@semanticsquare.com", "	test", "Anita", "	M",
 				Gender.FEMALE, UserType.EDITOR);
-		users[0] = UserManager.getInstance().createUser(1003, "	user3@semanticsquare.com", "	test", "	Sara",
+		users[3] = UserManager.getInstance().createUser(1003, "	user3@semanticsquare.com", "	test", "	Sara",
 				"	M", Gender.FEMALE, UserType.EDITOR);
-		users[0] = UserManager.getInstance().createUser(1004, "	user4@semanticsquare.com", "	test", "	Dheeru",
+		users[4] = UserManager.getInstance().createUser(1004, "	user4@semanticsquare.com", "	test", "	Dheeru",
 				"	M", Gender.MALE, UserType.CHIEF_EDITOR);
 	}
 

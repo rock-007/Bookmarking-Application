@@ -1,5 +1,7 @@
 package dev.umairashraf.BookmarkingApp.entities;
 
+import java.util.Arrays;
+
 public class Movie extends Bookmark {
 	private String[] cast;
 	private String[] directors;
@@ -45,6 +47,12 @@ public class Movie extends Bookmark {
 
 	public void setImdbRating(double imdbRating) {
 		this.imdbRating = imdbRating;
+	}
+
+	@Override
+	public String toString() {
+		return "Movie [cast=" + Arrays.toString(cast) + ", directors=" + Arrays.toString(directors) + ", genre=" + genre
+				+ ", imdbRating=" + imdbRating + ", releaseYear=" + releaseYear + "]";
 	}
 
 }
