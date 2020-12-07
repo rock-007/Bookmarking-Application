@@ -15,18 +15,19 @@ public class UserManager {
 		return instance;
 	}
 
+	// method to instatiate user (invoke from data store class)
 	public User createUser(long id, String email, String password, String firstName, String lastName, int gender,
 			String userType) {
-User user =new User();
-user.setId(id);
-user.setEmail(email);
-user.setPassword(password);
-user.setFirstName(firstName);
-user.setLastName(lastName);
-user.setGender(gender);
-user.setUserType(userType);                                
+		User user = new User();
+		user.setId(id);
+		user.setEmail(email);
+		user.setPassword(password);
+		user.setFirstName(firstName);
+		user.setLastName(lastName);
+		user.setGender(gender);
+		user.setUserType(userType);
 //reutrn user manager class instance
-return user;
+		return user;
 
 	}
 
