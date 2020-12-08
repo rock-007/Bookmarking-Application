@@ -19,13 +19,11 @@ public class Launch {
         printBookmarkData();
     }
 
-
     private static void printUserData() {
         for (User user : users) {
             System.out.println(user);
         }
     }
-
 
     private static void printBookmarkData() {
         for (Bookmark[] bookmarkList : bookmarks) {
@@ -35,14 +33,15 @@ public class Launch {
         }
     }
 
+    private static void startBookmarking() {
+        System.out.println("\n2. Bookmarking ...");
+        for(User user: users) {
+            View.bookmark(user, bookmarks);
+        }
+    }
 
     public static void main(String[] args) {
         loadData();
         startBookmarking();
-    }
-
-
-    private static void startBookmarking() {
-        // TODO Auto-generated method stub
     }
 }
