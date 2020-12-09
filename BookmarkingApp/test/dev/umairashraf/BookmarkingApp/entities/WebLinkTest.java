@@ -1,4 +1,6 @@
 package dev.umairashraf.BookmarkingApp.entities;
+
+
 import static org.junit.Assert.*;
 import org.junit.Test;
 import dev.umairashraf.BookmarkingApp.managers.BookmarkManager;
@@ -12,7 +14,8 @@ public class WebLinkTest {
             "Part 2 http://www.javaworld.com/article/2072759/core-java/taming-tiger-porn-part-2.html",
             "   http://www.javaworld.com");
         boolean isKidFriendlyEligible = weblink.iskidFriendlyEligible();
-        assertFalse("For porn in url-isKidFriendlyEligible() must return false", isKidFriendlyEligible);
+        assertFalse("For porn in url-isKidFriendlyEligible() must return false",
+            isKidFriendlyEligible);
         // Test 2 porn in title -- false
         weblink = BookmarkManager.getInstance().createWebLink(2000, "Taming porn",
             "Part 2 http://www.javaworld.com/article/2072759/core-java/taming-tiger--part-2.html",
@@ -39,6 +42,7 @@ public class WebLinkTest {
             "Part 2 http://www.javaworld.com/article/2072759/core-java/taming-tiger-adult-part-2.html",
             "   http://www.javaworld.com");
         isKidFriendlyEligible = weblink.iskidFriendlyEligible();
-        assertTrue("For adult in title-isKidFriendlyEligible() must return true", isKidFriendlyEligible);
+        assertTrue("For adult in title-isKidFriendlyEligible() must return true",
+            isKidFriendlyEligible);
     }
 }

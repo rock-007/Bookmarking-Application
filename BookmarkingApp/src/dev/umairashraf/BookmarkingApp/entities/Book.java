@@ -1,11 +1,15 @@
 package dev.umairashraf.BookmarkingApp.entities;
+
+
 import java.util.Arrays;
+import org.apache.commons.lang3.StringUtils;
 import dev.umairashraf.BookmarkingApp.constants.BookGenre;
+import dev.umairashraf.BookmarkingApp.entities.partner.Shareable;
 
 
-public class Book extends Bookmark {
+public class Book extends Bookmark implements Shareable {
     private String publisher;
-    private String[] author;
+    private String[] authors;
     private String genre;
     private double amazonRating;
     private int publicationYear;
@@ -26,12 +30,12 @@ public class Book extends Bookmark {
         this.publisher = publisher;
     }
 
-    public String[] getAuthor() {
-        return author;
+    public String[] getAuthors() {
+        return authors;
     }
 
-    public void setAuthor(String[] author) {
-        this.author = author;
+    public void setAuthors(String[] author) {
+        this.authors = author;
     }
 
     public String getGenre() {
@@ -52,8 +56,9 @@ public class Book extends Bookmark {
 
     @Override
     public String toString() {
-        return "Book [publisher=" + publisher + ", author=" + Arrays.toString(author) + ", genre="
-            + genre + ", amazonRating=" + amazonRating + ", publicationYear=" + publicationYear + "]";
+        return "Book [publisher=" + publisher + ", authors=" + Arrays.toString(authors)
+            + ", genre=" + genre + ", amazonRating=" + amazonRating + ", publicationYear="
+            + publicationYear + "]";
     }
 
     @Override
@@ -64,5 +69,22 @@ public class Book extends Bookmark {
         }
 
         return true;
+    }
+
+    @Override
+    public String getItemData() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("<item>");
+        builder.append("<type>Book</type>");
+        builder.append("<title>").append(getTitle()).append(" </title>");
+        builder.append("<authors>").append(StringUtils.join(authors, ",")).append(
+            " </authors>");
+        builder.append("<publisher>").append(publisher).append(" </publisher>");
+        builder.append("<publicationYear>").append(publicationYear).append(
+            " </publicationYear>");
+        builder.append("<genre>").append(genre).append(" </genre>");
+        builder.append("<amazonRating>").append(amazonRating).append(" </amazonRating>");
+        builder.append("</item");
+        return builder.toString(); // we use tostring here b/c
     }
 }

@@ -1,5 +1,6 @@
 package dev.umairashraf.BookmarkingApp.managers;
 
+
 import dev.umairashraf.BookmarkingApp.DataStore;
 import dev.umairashraf.BookmarkingApp.dao.BookmarkDao;
 import dev.umairashraf.BookmarkingApp.entities.Book;
@@ -8,6 +9,7 @@ import dev.umairashraf.BookmarkingApp.entities.Movie;
 import dev.umairashraf.BookmarkingApp.entities.User;
 import dev.umairashraf.BookmarkingApp.entities.UserBookmark;
 import dev.umairashraf.BookmarkingApp.entities.WebLink;
+
 
 public class BookmarkManager {
     private static BookmarkManager instance = new BookmarkManager();
@@ -21,9 +23,8 @@ public class BookmarkManager {
         return instance;
     }
 
-    public Movie createMovie(long id, String title, String profileUrl,
-        int releaseYear, String[] cast, String[] directors, String genre,
-        double imdbRating) {
+    public Movie createMovie(long id, String title, String profileUrl, int releaseYear,
+        String[] cast, String[] directors, String genre, double imdbRating) {
         Movie movie = new Movie();
         movie.setId(id);
         movie.setTitle(title);
@@ -36,8 +37,7 @@ public class BookmarkManager {
         return movie;
     }
 
-    public WebLink createWebLink(long id, String title, String url,
-        String host) {
+    public WebLink createWebLink(long id, String title, String url, String host) {
         WebLink weblink = new WebLink();
         weblink.setId(id);
         weblink.setTitle(title);
@@ -46,13 +46,13 @@ public class BookmarkManager {
         return weblink;
     }
 
-    public Book createBook(long id, String title, int publicationYear,
-        String publisher, String[] author, String genre, double amazonRating) {
+    public Book createBook(long id, String title, int publicationYear, String publisher,
+        String[] author, String genre, double amazonRating) {
         Book book = new Book();
         book.setId(id);
         book.setTitle(title);
         book.setPublisher(publisher);
-        book.setAuthor(author);
+        book.setAuthors(author);
         book.setGenre(genre);
         book.setAmazonRating(amazonRating);
         book.setPublicationYear(publicationYear);
@@ -67,7 +67,27 @@ public class BookmarkManager {
         UserBookmark userBookmark = new UserBookmark();
         userBookmark.setUser(user);
         userBookmark.setBookmark(bookmark);
-        
         dao.saveUserBookmark(userBookmark);
+    }
+
+    public void setKidFriendlyStatus(User user, String kidFriendlyStatus, Bookmark bookmark) {
+        bookmark.setKidFriendlyStatus(kidFriendlyStatus);
+        bookmark.setKidFriendlyMarkedBy(user);
+        System.out.println("kid-friendly status:" + kidFriendlyStatus + "Marked by:" + user
+            .getEmail() + "," + bookmark);
+    }
+
+    public void share(User user, Bookmark bookmark) {
+        bookmark.setSharedBy(user);
+        System.out.println("Data to be shared:");
+        if (bookmark instanceof Book) {
+
+            System.out.println("xxxxxxxxxxxxxxxx" + bookmark);
+            System.out.println(((Book) bookmark).getItemData());
+        } else if (bookmark instanceof WebLink) {
+
+            System.out.println(((WebLink) bookmark).getItemData());
+        }
+
     }
 }

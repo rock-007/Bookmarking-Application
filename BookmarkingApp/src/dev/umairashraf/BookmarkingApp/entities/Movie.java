@@ -1,4 +1,6 @@
 package dev.umairashraf.BookmarkingApp.entities;
+
+
 import java.util.Arrays;
 import dev.umairashraf.BookmarkingApp.constants.MovieGenre;
 
@@ -52,13 +54,14 @@ public class Movie extends Bookmark {
 
     @Override
     public String toString() {
-        return "Movie [cast=" + Arrays.toString(cast) + ", directors=" + Arrays.toString(directors)
-            + ", genre=" + genre + ", imdbRating=" + imdbRating + ", releaseYear=" + releaseYear + "]";
+        return "Movie [cast=" + Arrays.toString(cast) + ", directors=" + Arrays.toString(
+            directors) + ", genre=" + genre + ", imdbRating=" + imdbRating + ", releaseYear="
+            + releaseYear + "]";
     }
 
     @Override
     public boolean iskidFriendlyEligible() {
-        if (genre.equals(MovieGenre.HORROR) ||genre.equals(MovieGenre.THRILLERS) ) {
+        if (genre.equals(MovieGenre.HORROR) || genre.equals(MovieGenre.THRILLERS)) {
 
             return false;
         }

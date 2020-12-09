@@ -1,6 +1,11 @@
 package dev.umairashraf.BookmarkingApp.entities;
 
-public class WebLink extends Bookmark {
+
+import org.apache.commons.lang3.StringUtils;
+import dev.umairashraf.BookmarkingApp.entities.partner.Shareable;
+
+
+public class WebLink extends Bookmark implements Shareable {
     private String url;
     private String host;
 
@@ -28,9 +33,23 @@ public class WebLink extends Bookmark {
 
     @Override
     public boolean iskidFriendlyEligible() {
-        if(url.contains("porn")|| getTitle().contains("porn") || host.contains("adult")) {
+        if (url.contains("porn") || getTitle().contains("porn") || host.contains("adult")) {
+
             return false;
         }
+
         return true;
+    }
+
+    @Override
+    public String getItemData() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("<item>");
+        builder.append("<type>WebLink</type>");
+        builder.append("<title>").append(getTitle()).append(" </title>");
+        builder.append("<url>").append(url).append(" </url>");
+        builder.append("<host>").append(host).append(" </host>");
+        builder.append("</item");
+        return builder.toString(); // we use tostring here b/c
     }
 }
